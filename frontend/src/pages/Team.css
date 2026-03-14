@@ -1,0 +1,98 @@
+/* Team page */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+
+.team-grid > .team-card:only-child {
+  grid-column: 1 / -1;
+  max-width: 480px;
+}
+
+.team-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  max-width: 420px;
+  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+}
+
+.team-img-wrap {
+  height: 300px;
+  overflow: hidden;
+  background: var(--color-section-alt);
+}
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s;
+}
+.team-card:hover .team-img { transform: scale(1.04); }
+
+.team-info {
+  padding: 24px 26px 28px;
+}
+.team-name {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+.team-role {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+}
+.team-bio {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.team-expertise {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.expertise-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(63, 89, 228, 0.08);
+  color: var(--color-primary);
+  border: 1px solid rgba(63, 89, 228, 0.2);
+}
+
+/* ─── Join CTA ─── */
+.join-cta {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.join-cta h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-bottom: 12px;
+}
+.join-cta p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
