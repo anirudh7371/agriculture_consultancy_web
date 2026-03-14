@@ -46,8 +46,23 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
-// Serve built frontend in production
-app.use(express.static(path.join(__dirname, 'dist')));
+// Serve built frontend in production with explicit MIME types
+const distPath = path.join(__dirname, 'dist');
+app.use(express.static(distPath, {
+  maxAge: '1h',
+  etag: false,
+  setHeaders: (res, path) => {
+    if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+    } else if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css; charset=utf-8');
+    } else if (path.endsWith('.json')) {
+      res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    }
+  }
+}));
+
+console.log(`Serving static files from: ${distPath}`);
 
 // API Routes
 app.use('/api/home', homeRoutes);
